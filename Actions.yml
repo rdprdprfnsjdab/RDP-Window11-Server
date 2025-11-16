@@ -6,10 +6,10 @@ on:
       duration:
         description: '🕐 Thời gian sử dụng'
         required: false
-        default: '2000h160m'
+        default: '2160h'
         type: choice
         options:
-        - '2000h160m'
+        - '2160h'
 
 jobs:
   Premium-RDP-Setup:
@@ -264,9 +264,7 @@ jobs:
           # Chuyển đổi thời gian từ input sang phút
           $durationInput = "${{ github.event.inputs.duration }}"
           switch ($durationInput) {
-              "1h" { $totalMinutes = 60; $displayTime = "1 giờ" }
-              "3h" { $totalMinutes = 180; $displayTime = "3 giờ" }
-              "2000h160m" { $totalMinutes = 2000160; $displayTime = "2000 giờ 160 phút" }
+              "2160h" { $totalMinutes = 2160 * 60; $displayTime = "2160 giờ (90 ngày)" }
           }
           
           # Tính thời gian chính xác
@@ -419,5 +417,3 @@ jobs:
           
           Write-Host ""
           Write-Host "🎉 Dọn dẹp hoàn tất! Hẹn gặp lại! 👋" -ForegroundColor Green
-
-
